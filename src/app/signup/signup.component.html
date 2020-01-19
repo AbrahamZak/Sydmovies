@@ -1,23 +1,28 @@
-<div class="card">
+    <div class="card">
     <article class="card-body">
     <h4 class="card-title mb-4 mt-1">Create Account</h4>
-         <form>
+    <div class="row" *ngIf="authError">
+        <div class="col-12 alert alert-danger">
+          {{ authError?.message }}
+        </div>
+      </div>
+         <form #userRegForm="ngForm" (ngSubmit)="createUser(userRegForm)">
         <div class="form-group">
-            <label>Name</label>
-            <input name="" class="form-control" placeholder="Name" type="text">
+            <label for ="name">Name</label>
+            <input ngModel #name="ngModel" name="name" type="text" class="form-control" placeholder="Name" id="name">
         </div> <!-- form-group// -->
         <div class="form-group">
-            <label>Email</label>
-            <input name="" class="form-control" placeholder="Email" type="email">
+            <label for="email">Email</label>
+            <input ngModel #email="ngModel" name="email" class="form-control" placeholder="Email" type="email">
         </div> <!-- form-group// -->
         <div class="form-group">
             <label>Password</label>
-            <input class="form-control" placeholder="******" type="password">
+            <input ngModel #password="ngModel" name="password" class="form-control" placeholder="******" type="password">
             <p>Passwords must be at least 8 characters</p>
         </div> <!-- form-group// --> 
         <div class="form-group">
             <label>Re-enter Password</label>
-            <input class="form-control" placeholder="" type="password">
+            <input ngModel #passwordconfirm="ngModel" name="passwordconfirm" class="form-control" placeholder="" type="password">
         </div> <!-- form-group// --> 
         <div class="form-group">
             <button type="submit" class="btn btn-outline-dark btn-block">Create your account</button>

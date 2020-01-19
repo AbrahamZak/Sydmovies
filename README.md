@@ -13,8 +13,7 @@ Review movies/TV shows (star rating system)
 ## Architecture
 
 Angular frontend
-Express JS server (handling API calls)
-Firebase Database (user information)
+Firebase User Authentication and noSQL database 
 
 ## Tools/APIs Used
 Bootstrap

@@ -8,7 +8,7 @@ img{
 ----------------------------------------------------- */
 @media (max-width: 768px) {
 img{
-    height: 93vh;
+    height: 90vh;
     width: auto;
 }
 }

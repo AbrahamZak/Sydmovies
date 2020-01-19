@@ -1,6 +1,7 @@
 <nav class="navbar navbar-light bg-light">
     <a [routerLink]="'/'" class="navbar-brand">Sydmovies</a>
         <input class="form-control" type="search" placeholder="Search Movies" aria-label="Search">
-        <a [routerLink]="['/login']"><button class="btn btn-outline-dark float-sm-right" type="link">Sign In</button></a>
-  </nav>
-<router-outlet></router-outlet>
+        <a><button class="btn btn-outline-dark float-sm-right" *ngIf="!user" (click)="login()" type="link">Sign In</button></a>
+        <a><button class="btn btn-outline-dark float-sm-right" *ngIf="user" (click)="logout()" type="link">Logout</button></a>
+      </nav>
+  <router-outlet></router-outlet>

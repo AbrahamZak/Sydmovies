@@ -1,16 +1,22 @@
-<div class="card">
+<div class="card">  
     <article class="card-body">
     <a [routerLink]="['/signup']" class="float-right btn btn-outline-dark">Sign up</a>
+    <div class="row" *ngIf="authError">
+        <div class="col-12 alert alert-danger">
+          {{ authError?.message }}
+        </div>
+        <br>
+      </div>
     <h4 class="card-title mb-4 mt-1">Sign in</h4>
-         <form>
+         <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
         <div class="form-group">
             <label>Email</label>
-            <input name="" class="form-control" placeholder="Email" type="email">
+            <input ngModel #email="ngModel" name="email" class="form-control" placeholder="Email" type="email">
         </div> <!-- form-group// -->
         <div class="form-group">
             <a class="float-right" href="#">Forgot your password?</a>
             <label>Password</label>
-            <input class="form-control" placeholder="******" type="password">
+            <input ngModel #password="ngModel"  name="password" class="form-control" placeholder="******" type="password">
         </div> <!-- form-group// --> 
         <div class="form-group">
             <button type="submit" class="btn btn-outline-dark btn-block">Sign-In</button>
