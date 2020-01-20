@@ -24,6 +24,10 @@ login() {
   this.router.navigate(['/login']);
 }
 
+profile() {
+  this.router.navigate(['/profile']);
+}
+
 logout(){
   this.auth.logout();
 }

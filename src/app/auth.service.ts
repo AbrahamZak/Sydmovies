@@ -9,8 +9,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
 
-  private eventAuthError = new BehaviorSubject<any>("");
-  eventAuthError$ = this.eventAuthError.asObservable();
+  private eventAuthErrorLogin = new BehaviorSubject<any>("");
+  private eventAuthErrorSignUp = new BehaviorSubject<any>("");
+  private eventAuthErrorReset = new BehaviorSubject<any>("");
+  eventAuthErrorLogin$ = this.eventAuthErrorLogin.asObservable();
+  eventAuthErrorSignUp$ = this.eventAuthErrorSignUp.asObservable();
+  eventAuthErrorReset$ = this.eventAuthErrorReset.asObservable();
 
   newUser: any;
 
@@ -32,7 +36,7 @@ export class AuthService {
             error.message = "We cannot find an account with that email address or the password is incorrect."
           }
 
-          this.eventAuthError.next(error);
+          this.eventAuthErrorLogin.next(error);
         })
         .then(userCredential => {
           if(userCredential) {
@@ -41,6 +45,33 @@ export class AuthService {
         })
     }
 
+    changePassword(user, currentPassword, passwordChange, passwordChangeConfirm){
+        //set new password after checking conditions
+      if (passwordChange!=passwordChangeConfirm){
+        var errorMsg  = 
+                     {
+                         "code": "auth/password-match",
+                         "message": "Passwords do not match."
+                     };
+        this.eventAuthErrorReset.next(errorMsg);
+      }
+      else if (passwordChange.length<8){
+        var errorMsg  = 
+                     {
+                      "code": "auth/password-length",
+                      "message": "Passwords must be 8 characters or more."
+                     };
+        this.eventAuthErrorReset.next(errorMsg);
+      }
+      else{
+        user.updatePassword(passwordChange).then(function() {
+        }).catch(error=>{
+          this.eventAuthErrorReset.next(error);
+        });
+      }
+    }
+  
+
     createUser(user){
       if (user.password != user.passwordconfirm){
         var errorMsg  = 
@@ -48,7 +79,7 @@ export class AuthService {
                          "code": "auth/password-match",
                          "message": "Passwords do not match."
                      };
-        this.eventAuthError.next(errorMsg);
+        this.eventAuthErrorSignUp.next(errorMsg);
       }
       else if (user.password.length<8){
         var errorMsg  = 
@@ -56,7 +87,7 @@ export class AuthService {
                          "code": "auth/password-length",
                          "message": "Passwords must be 8 characters or more."
                      };
-        this.eventAuthError.next(errorMsg);
+        this.eventAuthErrorSignUp.next(errorMsg);
       }
       else if (user.name.length==0){
         var errorMsg  = 
@@ -64,7 +95,7 @@ export class AuthService {
                          "code": "auth/no-name",
                          "message": "Please enter your name."
                      };
-        this.eventAuthError.next(errorMsg);
+        this.eventAuthErrorSignUp.next(errorMsg);
       }
       else{
       this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
@@ -72,7 +103,7 @@ export class AuthService {
         this.newUser = user;
 
         userCredential.user.updateProfile( {
-          displayName: user.name
+        displayName: user.name
         });
 
         this.insertUserData(userCredential)
@@ -84,7 +115,7 @@ export class AuthService {
       if (error.message == "The email address is badly formatted."){
         error.message = "Please enter a valid email."
       }
-      this.eventAuthError.next(error);
+      this.eventAuthErrorSignUp.next(error);
     })
   }
   }

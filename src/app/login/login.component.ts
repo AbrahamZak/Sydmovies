@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   
   login(frm){
     this.auth.login(frm.value.email, frm.value.password);
-    this.auth.eventAuthError$.subscribe(data=>{
+    this.auth.eventAuthErrorLogin$.subscribe(data=>{
       this.authError = data;
     })
   }

@@ -1,0 +1,41 @@
+<br>
+<h1>Hello, {{ user?.displayName }}</h1>
+<h3>Your Favorites</h3>
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">First item</li>
+    <li class="list-group-item">Second item</li>
+    <li class="list-group-item">Third item</li>
+    <li class="list-group-item">Fourth item</li>
+  </ul>
+<br><br>
+  <h3>Your Reviews</h3>
+  <p>Reviews will go here...</p>
+  <br>
+
+  <div class="card">  
+    <article class="card-body">
+        <h4 class="card-title mb-4 mt-1">Change your password</h4>
+        <div class="row" *ngIf="authError">
+          <div class="col-12 alert alert-danger">
+            {{ authError?.message }}
+          </div>
+        </div>
+  <form #passwordChangeForm="ngForm" (ngSubmit)="changePassword(passwordChangeForm)">
+    <div class="form-group">
+      <label>Current Password</label>
+      <input ngModel #currentPassword="ngModel" name="currentPassword" class="form-control" placeholder="" type="password">
+  </div> <!-- form-group// -->
+    <div class="form-group">
+        <label>New Password</label>
+        <input ngModel #passwordChange="ngModel" name="passwordChange" class="form-control" placeholder="" type="password">
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <label>Confirm New Password</label>
+        <input ngModel #passwordChangeConfirm="ngModel" name="passwordChangeConfirm" class="form-control" placeholder="" type="password">
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <button type="submit" class="btn btn-outline-dark btn-block">Change Password</button>
+    </div> <!-- form-group// -->                                                           
+</form>
+</article>
+</div>

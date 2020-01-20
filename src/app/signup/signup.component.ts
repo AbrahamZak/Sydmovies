@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
 
   createUser(frm){
     this.auth.createUser(frm.value);
-      this.auth.eventAuthError$.subscribe(data=>{
+      this.auth.eventAuthErrorSignUp$.subscribe(data=>{
       this.authError = data;
       console.log(data);
     })
