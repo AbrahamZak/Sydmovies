@@ -12,13 +12,13 @@ export class LoginComponent implements OnInit {
   constructor(private auth: AuthService) { }
 
   ngOnInit() {
-    this.auth.eventAuthError$.subscribe(data=>{
-      this.authError = data;
-    })
   }
   
   login(frm){
     this.auth.login(frm.value.email, frm.value.password);
+    this.auth.eventAuthError$.subscribe(data=>{
+      this.authError = data;
+    })
   }
 
 }

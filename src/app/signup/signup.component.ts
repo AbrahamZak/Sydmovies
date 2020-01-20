@@ -12,13 +12,14 @@ export class SignupComponent implements OnInit {
   constructor(private auth: AuthService) { }
 
   ngOnInit() {
-    this.auth.eventAuthError$.subscribe(data=>{
-      this.authError = data;
-    })
   }
 
   createUser(frm){
     this.auth.createUser(frm.value);
+      this.auth.eventAuthError$.subscribe(data=>{
+      this.authError = data;
+      console.log(data);
+    })
   }
 
 }

@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
 
-  private eventAuthError = new BehaviorSubject<string>("");
+  private eventAuthError = new BehaviorSubject<any>("");
   eventAuthError$ = this.eventAuthError.asObservable();
 
   newUser: any;
@@ -25,6 +25,13 @@ export class AuthService {
     login( email: string, password: string) {
       this.afAuth.auth.signInWithEmailAndPassword(email, password)
         .catch(error => {
+          if (error.message == "The email address is badly formatted."){
+            error.message = "Please enter a valid email."
+          }
+          else if (error.message == "The password is invalid or the user does not have a password."){
+            error.message = "We cannot find an account with that email address or the password is incorrect."
+          }
+
           this.eventAuthError.next(error);
         })
         .then(userCredential => {
@@ -35,6 +42,31 @@ export class AuthService {
     }
 
     createUser(user){
+      if (user.password != user.passwordconfirm){
+        var errorMsg  = 
+                     {
+                         "code": "auth/password-match",
+                         "message": "Passwords do not match."
+                     };
+        this.eventAuthError.next(errorMsg);
+      }
+      else if (user.password.length<8){
+        var errorMsg  = 
+                     {
+                         "code": "auth/password-length",
+                         "message": "Passwords must be 8 characters or more."
+                     };
+        this.eventAuthError.next(errorMsg);
+      }
+      else if (user.name.length==0){
+        var errorMsg  = 
+                     {
+                         "code": "auth/no-name",
+                         "message": "Please enter your name."
+                     };
+        this.eventAuthError.next(errorMsg);
+      }
+      else{
       this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
       .then(userCredential => {
         this.newUser = user;
@@ -49,8 +81,12 @@ export class AuthService {
       });
     })
     .catch(error=>{
+      if (error.message == "The email address is badly formatted."){
+        error.message = "Please enter a valid email."
+      }
       this.eventAuthError.next(error);
     })
+  }
   }
 
     insertUserData(userCredential: firebase.auth.UserCredential){

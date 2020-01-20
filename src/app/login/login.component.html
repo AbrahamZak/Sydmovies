@@ -1,12 +1,11 @@
 <div class="card">  
     <article class="card-body">
+        <div class="row" *ngIf="authError">
+            <div class="col-12 alert alert-danger">
+              {{ authError?.message }}
+            </div>
+          </div>
     <a [routerLink]="['/signup']" class="float-right btn btn-outline-dark">Sign up</a>
-    <div class="row" *ngIf="authError">
-        <div class="col-12 alert alert-danger">
-          {{ authError?.message }}
-        </div>
-        <br>
-      </div>
     <h4 class="card-title mb-4 mt-1">Sign in</h4>
          <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
         <div class="form-group">
