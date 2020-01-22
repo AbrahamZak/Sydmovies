@@ -1,3 +1,4 @@
+<div *ngIf="user">
 <br>
 <h1>Hello, {{ user?.displayName }}</h1>
 <h3>Your Favorites</h3>
@@ -15,9 +16,14 @@
   <div class="card">  
     <article class="card-body">
         <h4 class="card-title mb-4 mt-1">Change your password</h4>
-        <div class="row" *ngIf="authError">
+        <div class="row" *ngIf="error">
           <div class="col-12 alert alert-danger">
             {{ authError?.message }}
+          </div>
+        </div>
+        <div class="row" *ngIf="changeSuccess">
+          <div class="col-12 alert alert-success">
+            Successfully changed your password.
           </div>
         </div>
   <form #passwordChangeForm="ngForm" (ngSubmit)="changePassword(passwordChangeForm)">
@@ -38,4 +44,5 @@
     </div> <!-- form-group// -->                                                           
 </form>
 </article>
+</div>
 </div>

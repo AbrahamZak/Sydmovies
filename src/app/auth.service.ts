@@ -3,6 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { BehaviorSubject } from 'rxjs';
+import * as firebase from 'firebase';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +19,7 @@ export class AuthService {
   eventAuthErrorReset$ = this.eventAuthErrorReset.asObservable();
 
   newUser: any;
+  credential: any;
 
   constructor(private afAuth: AngularFireAuth,
     private db: AngularFirestore,
@@ -46,7 +49,7 @@ export class AuthService {
     }
 
     changePassword(user, currentPassword, passwordChange, passwordChangeConfirm){
-        //set new password after checking conditions
+      var success = false;
       if (passwordChange!=passwordChangeConfirm){
         var errorMsg  = 
                      {
@@ -64,11 +67,22 @@ export class AuthService {
         this.eventAuthErrorReset.next(errorMsg);
       }
       else{
-        user.updatePassword(passwordChange).then(function() {
+        this.credential = firebase.auth.EmailAuthProvider.credential(user.email, currentPassword);
+        success = user.reauthenticateWithCredential(this.credential).then(function() {
+          return user.updatePassword(passwordChange).then(function() {
+            return true;
+          }).catch(error=>{
+            this.eventAuthErrorReset.next(error);
+            return false;
+          });
         }).catch(error=>{
+          if (error.message == "The password is invalid or the user does not have a password."){
+            error.message = "Current password entered is incorrect."
+          }
           this.eventAuthErrorReset.next(error);
         });
       }
+      return success;
     }
   
 

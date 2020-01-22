@@ -57,5 +57,5 @@ Reset password - 100%\
 \
 Mobile Adjustments (0%)\
 Fix design for mobile experience - 0%\
-Other mobile tweeks - 0%\
+Other mobile tweeks - 0%
 
