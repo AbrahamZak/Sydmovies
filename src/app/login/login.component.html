@@ -14,7 +14,7 @@
             <input ngModel #email="ngModel" name="email" class="form-control" placeholder="Email" type="email">
         </div> <!-- form-group// -->
         <div class="form-group">
-            <a class="float-right" href="#">Forgot your password?</a>
+            <a [routerLink]="['/forgot']" class="float-right" href="#">Forgot your password?</a>
             <label>Password</label>
             <input ngModel #password="ngModel"  name="password" class="form-control" placeholder="******" type="password">
         </div> <!-- form-group// --> 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
-@Component({
+@Component({ 
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
 
   changePassword(passwordChangeForm){
     this.changeSuccess = this.auth.changePassword(this.user, passwordChangeForm.value.currentPassword, passwordChangeForm.value.passwordChange, passwordChangeForm.value.passwordChangeConfirm);
-    this.auth.eventAuthErrorReset$.subscribe(data=>{
+    this.auth.eventAuthErrorChange$.subscribe(data=>{
       this.authError = data;
     })
     if (this.changeSuccess == true){

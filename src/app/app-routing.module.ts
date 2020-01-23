@@ -4,6 +4,7 @@ import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ForgotComponent } from './forgot/forgot.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,11 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent
   }
+  ,
+  {
+  path: 'forgot',
+  component: ForgotComponent
+}
 ];
 
 @NgModule({

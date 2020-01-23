@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user: firebase.User;
+  user: firebase.User; 
   authError: any;
   constructor(private auth: AuthService, private router: Router) { }
 

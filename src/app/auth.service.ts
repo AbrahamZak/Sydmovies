@@ -14,9 +14,11 @@ export class AuthService {
   private eventAuthErrorLogin = new BehaviorSubject<any>("");
   private eventAuthErrorSignUp = new BehaviorSubject<any>("");
   private eventAuthErrorReset = new BehaviorSubject<any>("");
+  private eventAuthErrorChange = new BehaviorSubject<any>("");
   eventAuthErrorLogin$ = this.eventAuthErrorLogin.asObservable();
   eventAuthErrorSignUp$ = this.eventAuthErrorSignUp.asObservable();
   eventAuthErrorReset$ = this.eventAuthErrorReset.asObservable();
+  eventAuthErrorChange$ = this.eventAuthErrorChange.asObservable();
 
   newUser: any;
   credential: any;
@@ -56,7 +58,7 @@ export class AuthService {
                          "code": "auth/password-match",
                          "message": "Passwords do not match."
                      };
-        this.eventAuthErrorReset.next(errorMsg);
+        this.eventAuthErrorChange.next(errorMsg);
       }
       else if (passwordChange.length<8){
         var errorMsg  = 
@@ -64,7 +66,7 @@ export class AuthService {
                       "code": "auth/password-length",
                       "message": "Passwords must be 8 characters or more."
                      };
-        this.eventAuthErrorReset.next(errorMsg);
+        this.eventAuthErrorChange.next(errorMsg);
       }
       else{
         this.credential = firebase.auth.EmailAuthProvider.credential(user.email, currentPassword);
@@ -72,19 +74,33 @@ export class AuthService {
           return user.updatePassword(passwordChange).then(function() {
             return true;
           }).catch(error=>{
-            this.eventAuthErrorReset.next(error);
+            this.eventAuthErrorChange.next(error);
             return false;
           });
         }).catch(error=>{
           if (error.message == "The password is invalid or the user does not have a password."){
             error.message = "Current password entered is incorrect."
           }
-          this.eventAuthErrorReset.next(error);
+          this.eventAuthErrorChange.next(error);
         });
       }
       return success;
     }
-  
+
+    resetPassword(email: string) {
+      return this.afAuth.auth.sendPasswordResetEmail(email).then(function(){
+         return true;
+      }).catch(error=>{
+        if (error.message == "The email address is badly formatted."){
+          error.message = "Please enter a valid email."
+        }
+        else if (error.message == "There is no user record corresponding to this identifier. The user may have been deleted."){
+          error.message = "We couldn't find a user for that email."
+        }
+         this.eventAuthErrorReset.next(error);
+         return false;
+       });
+   }
 
     createUser(user){
       if (user.password != user.passwordconfirm){

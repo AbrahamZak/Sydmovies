@@ -34,10 +34,10 @@ Design - 100%\
 Sign up functionality - 100%\
 Sign up error handling - 100%\
 \
-Forgot Password page (0%)\
-Design - 0%\
-Functionality (input email and get reset email) - 0%\
-Password reset - 0%\
+Forgot Password page (100%)\
+Design - 100%\
+Functionality (input email and get reset email) - 100%\
+Password reset - 100%\
 \
 Movie Search Results (0%)\
 Design - 0%\
