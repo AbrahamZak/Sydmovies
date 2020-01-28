@@ -4,10 +4,10 @@
         <ul class="list-group list-group-flush">
           <li *ngFor='let result of searchResults'  class="list-group-item d-flex justify-content-between align-items-center">
             <div class="image-parent">
-                <img src={{result.Poster}} class="img-fluid">
+                <img routerLink="/title/{{result.Title}}" src={{result.Poster}} class="img-fluid pointer">
              </div>
              <div class="res">
-            <p><strong>{{result.Title}} </strong></p>
+            <p routerLink="/title/{{result.Title}}" class="pointer"><strong>{{result.Title}}</strong></p>
             <p class="text-muted">({{result.Year}})</p>
         </div>
         <div> </div>

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-light bg-light">
     <a [routerLink]="'/'" class="navbar-brand">Sydmovies</a>
   
-        <input type="search" ngModel #searchTerm="ngModel" (keyup.enter)="search(searchTerm)" name="searchTerm" class="form-control"  placeholder="Search Movies" aria-label="Search">
+        <input type="search" ngModel #searchTerm="ngModel" (keydown.enter)="search(searchTerm)" name="searchTerm" class="form-control"  placeholder="Search Movies" aria-label="Search">
      
         <a><button class="btn btn-outline-dark float-sm-right" *ngIf="!user" (click)="login()" type="link">Sign In</button></a>
         <div *ngIf="user" class="dropdown">

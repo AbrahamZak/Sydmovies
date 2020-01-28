@@ -1,0 +1,17 @@
+{{movieData.Title}}
+{{movieData.Plot}}
+{{movieData.Rated}}
+{{movieData.Released}}
+{{movieData.Runtime}}
+{{movieData.Genre}}
+{{movieData.Director}}
+{{movieData.Writer}}
+{{movieData.Actors}}
+{{movieData.BoxOffice}}
+{{movieData.Production}}
+<ul class="list-group list-group-flush">
+    <li *ngFor='let result of movieData["Ratings"]'  class="list-group-item">
+        {{result.Source}}
+        {{result.Value}}
+     </li>
+</ul>

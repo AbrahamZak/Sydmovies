@@ -40,6 +40,9 @@ export class AuthService {
           else if (error.message == "The password is invalid or the user does not have a password."){
             error.message = "We cannot find an account with that email address or the password is incorrect."
           }
+          else if (error.message == "There is no user record corresponding to this identifier. The user may have been deleted."){
+            error.message = "We cannot find an account with that email address or the password is incorrect."
+          }
 
           this.eventAuthErrorLogin.next(error);
         })

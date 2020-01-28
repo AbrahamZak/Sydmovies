@@ -6,6 +6,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ForgotComponent } from './forgot/forgot.component';
 import { SearchComponent } from './search/search.component';
+import { TitleComponent } from './title/title.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,9 @@ const routes: Routes = [
     { 
       path: 'search/:query', 
       component: SearchComponent },
+    { 
+      path: 'title/:movie', 
+      component: TitleComponent },
     {
     path: 'login',
     component: LoginComponent
