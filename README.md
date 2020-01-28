@@ -39,9 +39,9 @@ Design - 100%\
 Functionality (input email and get reset email) - 100%\
 Password reset - 100%\
 \
-Movie Search Results (0%)\
-Design - 0%\
-Integration with movie API - 0%\
+Movie Search Results (100%)\
+Design - 100%\
+Integration with movie API - 100%\
 \
 Movie page (from search results) (0%)\
 Design - 0%\

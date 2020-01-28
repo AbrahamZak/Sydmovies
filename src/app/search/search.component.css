@@ -1,0 +1,17 @@
+h3{
+    padding-left: 15px;
+}
+
+.image-parent {
+       max-width: 100px;
+       display:inline-block;
+}
+
+.text-muted{
+    margin-top: -20px;
+}
+
+.res{
+    display:inline-block;
+    text-align: center;
+}

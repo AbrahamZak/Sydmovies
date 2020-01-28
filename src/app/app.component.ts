@@ -24,6 +24,10 @@ login() {
   this.router.navigate(['/login']);
 }
 
+search(searchTerm){
+  this.router.navigate(["/search/", searchTerm.value]);
+}
+
 profile() {
   this.router.navigate(['/profile']);
 }

@@ -5,12 +5,16 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ForgotComponent } from './forgot/forgot.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
       path: '',
       component: MainComponent
     },
+    { 
+      path: 'search/:query', 
+      component: SearchComponent },
     {
     path: 'login',
     component: LoginComponent
@@ -29,9 +33,8 @@ const routes: Routes = [
   {
   path: 'forgot',
   component: ForgotComponent
-}
+  }
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
