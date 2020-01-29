@@ -1,17 +1,49 @@
-{{movieData.Title}}
-{{movieData.Plot}}
-{{movieData.Rated}}
-{{movieData.Released}}
-{{movieData.Runtime}}
-{{movieData.Genre}}
-{{movieData.Director}}
-{{movieData.Writer}}
-{{movieData.Actors}}
-{{movieData.BoxOffice}}
-{{movieData.Production}}
-<ul class="list-group list-group-flush">
-    <li *ngFor='let result of movieData["Ratings"]'  class="list-group-item">
-        {{result.Source}}
-        {{result.Value}}
-     </li>
-</ul>
+<br>
+<h3>{{movieData.Title}}</h3>
+
+<img id="poster" src={{movieData.Poster}} class="img-fluid">
+
+<p>{{movieData.Plot}}</p>
+
+<div class="container">
+<div class="d-flex justify-content-around">
+<div class="score">
+<img class="logo" src="../assets/img/imdb.jpg"><p>{{ratingData[0]?.Value}}</p>
+</div>
+<div class="score">
+<img class="logo"  src="../assets/img/rt.png"><p>{{ratingData[1]?.Value}}</p>
+</div>
+<div class="score">
+<img class="logo"  src="../assets/img/meta.png"><p>{{ratingData[2]?.Value}}</p>
+</div>
+</div>
+<h2>Sydscore: X/10</h2>
+</div>
+
+<br>
+<div class="row">
+<div class="col-sm">
+<div class="details">
+<h4>Movie Info:</h4>
+<div class="MainDetails">
+    <p>Rated: <strong>{{movieData.Rated}}</strong></p>
+    <p>Release Date: <strong>{{movieData.Released}}</strong></p>
+    <p>Runtime: <strong>{{movieData.Runtime}}</strong></p>
+    <p><strong>Genre:</strong> {{movieData.Genre}}</p>
+    <p><strong>Directed By:</strong> {{movieData.Director}}</p>
+    <p><strong>Written By:</strong> {{movieData.Writer}}</p>
+    <p><strong>Studio:</strong> {{movieData.Production}}</p>
+    </div>
+</div>
+
+<h4>Cast:</h4>
+<div class="Cast">
+    <p>{{movieData.Actors}}</p>
+    </div>
+
+<h4>Box Office:</h4>
+<div class="Box">
+    <p>{{movieData.BoxOffice}}</p>
+</div>
+</div>
+</div>

@@ -9,7 +9,8 @@ import { MoviesService } from '../movies.service';
 })
 export class TitleComponent implements OnInit {
   movie: string;
-  movieData = {};
+  movieData: any = {};
+  ratingData: any = {};
 
   constructor(private route: ActivatedRoute, private movies: MoviesService) { }
 
@@ -22,7 +23,14 @@ export class TitleComponent implements OnInit {
   
   loadMovie(){
     return this.movies.getMovie(this.movie)
-      .subscribe(data => this.movieData = data);
+      .subscribe(
+        data => 
+        {
+          this.movieData = data;
+          this.ratingData = data['Ratings'];
+        },
+        error => console.log("error")
+      );
   }
 
 }

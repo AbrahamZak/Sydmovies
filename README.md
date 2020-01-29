@@ -43,9 +43,9 @@ Movie Search Results (100%)\
 Design - 100%\
 Integration with movie API - 100%\
 \
-Movie page (from search results) (0%)\
-Design - 0%\
-Integration with movie API - 0%\
+Movie page (from search results) (50%)\
+Design - 75%\
+Integration with movie API - 100%\
 Favorite movie (when logged in) - 0%\
 Review movie (when logged in) - 0%\
 \
