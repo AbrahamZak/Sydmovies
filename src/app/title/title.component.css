@@ -29,6 +29,17 @@ ul{
 .details p{
     margin-bottom: 3px;
 }
-p{
-    margin-right: 10px;
+.MainDetails{
+    margin-right: 50px;
 }
+.mobile-break { display: none; }
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+@media (max-width: 768px) {
+    .mobile-break { display: inherit; }
+    .row{
+        margin-right: 10px;
+    }
+    }
