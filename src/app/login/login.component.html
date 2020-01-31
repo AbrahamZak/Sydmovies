@@ -16,7 +16,7 @@
         <div class="form-group">
             <a [routerLink]="['/forgot']" class="float-right" href="#">Forgot your password?</a>
             <label>Password</label>
-            <input ngModel #password="ngModel"  name="password" class="form-control" placeholder="******" type="password">
+            <input ngModel #password="ngModel"  name="password" class="form-control" placeholder="******" type="password" autocomplete="on">
         </div> <!-- form-group// --> 
         <div class="form-group">
             <button type="submit" class="btn btn-outline-dark btn-block">Sign-In</button>

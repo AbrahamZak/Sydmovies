@@ -36,15 +36,15 @@
   <form #passwordChangeForm="ngForm" (ngSubmit)="changePassword(passwordChangeForm)">
     <div class="form-group">
       <label>Current Password</label>
-      <input ngModel #currentPassword="ngModel" name="currentPassword" class="form-control" placeholder="" type="password">
+      <input ngModel #currentPassword="ngModel" name="currentPassword" class="form-control" placeholder="" type="password" autocomplete="on">
   </div> <!-- form-group// -->
     <div class="form-group">
         <label>New Password</label>
-        <input ngModel #passwordChange="ngModel" name="passwordChange" class="form-control" placeholder="" type="password">
+        <input ngModel #passwordChange="ngModel" name="passwordChange" class="form-control" placeholder="" type="password" autocomplete="off">
     </div> <!-- form-group// -->
     <div class="form-group">
         <label>Confirm New Password</label>
-        <input ngModel #passwordChangeConfirm="ngModel" name="passwordChangeConfirm" class="form-control" placeholder="" type="password">
+        <input ngModel #passwordChangeConfirm="ngModel" name="passwordChangeConfirm" class="form-control" placeholder="" type="password" autocomplete="off">
     </div> <!-- form-group// -->
     <div class="form-group">
         <button type="submit" class="btn btn-outline-dark btn-block">Change Password</button>

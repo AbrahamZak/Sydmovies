@@ -24,7 +24,6 @@ export class ProfileComponent implements OnInit {
             this.router.navigate(['/login']);
           }
           this.favorites = await this.movies.getFavorites(user.uid);
-          console.log(this.favorites);
         })
   }
 
