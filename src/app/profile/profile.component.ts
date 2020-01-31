@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { MoviesService } from '../movies.service';
 import { Router } from '@angular/router';
 
 @Component({ 
@@ -9,18 +10,21 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   user: firebase.User; 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router, private movies: MoviesService) { }
   authError: any;
   changeSuccess = false;
   error = false;
+  favorites: any;
 
   ngOnInit() {
     this.auth.getUserState()
-        .subscribe( user => {
+        .subscribe( async user => {
           this.user = user;
           if (this.user == null){
             this.router.navigate(['/login']);
           }
+          this.favorites = await this.movies.getFavorites(user.uid);
+          console.log(this.favorites);
         })
   }
 

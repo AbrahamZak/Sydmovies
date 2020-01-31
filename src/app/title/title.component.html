@@ -1,8 +1,13 @@
 <br>
-<h3>{{movieData.Title}}</h3>
+<h3>
+    <i *ngIf="user && liked" (click)="unFavorite()" class="fas fa-star fa-md pointer" alt="UnFavorite this title"></i> 
+    <i *ngIf="user && !liked" (click)="favorite()" class="far fa-star fa-md pointer" alt="Favorite this title"></i> 
+    {{movieData.Title}}
+</h3>
+
 
 <img id="poster" src={{movieData.Poster}} class="img-fluid">
-
+        
 <p>{{movieData.Plot}}</p>
 
 <div class="container">

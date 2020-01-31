@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
     .subscribe( user => {
       this.user = user;
       if (this.user != null){
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/']);
       }
     })
   }

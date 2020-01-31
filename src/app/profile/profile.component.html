@@ -2,12 +2,19 @@
 <br>
 <h1>Hello, {{ user?.displayName }}</h1>
 <h3>Your Favorites</h3>
-<ul class="list-group list-group-flush">
-    <li class="list-group-item">First item</li>
-    <li class="list-group-item">Second item</li>
-    <li class="list-group-item">Third item</li>
-    <li class="list-group-item">Fourth item</li>
-  </ul>
+        <h5 *ngIf='favorites.length == 0'>It seems that you don't have any favorites yet.</h5>
+          <ul class="list-group list-group-flush">
+            <li *ngFor='let favorite of favorites'  class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="image-parent">
+                  <img routerLink="/title/{{favorite.Title}}" src={{favorite.Poster}} class="img-fluid pointer">
+               </div>
+               <div class="res">
+              <p routerLink="/title/{{favorite.Title}}" class="pointer"><strong>{{favorite.Title}}</strong></p>
+              <p class="text-muted">({{favorite.Year}})</p>
+          </div>
+          <div> </div>
+            </li>
+          </ul>
 <br><br>
   <h3>Your Reviews</h3>
   <p>Reviews will go here...</p>

@@ -29,17 +29,27 @@ ul{
 .details p{
     margin-bottom: 3px;
 }
-.MainDetails{
+.details{
+    max-width: 50%;
     margin-right: 50px;
 }
 .mobile-break { display: none; }
 
+.pointer {
+    cursor: pointer;
+}
+
+.fa-star{
+    color: gold;
+}
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
 @media (max-width: 768px) {
     .mobile-break { display: inherit; }
-    .row{
-        margin-right: 10px;
+
+    .details{
+        margin-right: 5px;
+        min-width: 90%;
     }
     }
