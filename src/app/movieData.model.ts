@@ -1,3 +1,4 @@
+//Model for the movie data from OMDB API
 export class MovieData{
     Title: string;
     Year: string;

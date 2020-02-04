@@ -42,6 +42,59 @@ ul{
 .fa-star{
     color: gold;
 }
+
+.card-header{
+    color: black;
+}
+
+.card-header:after {
+    font-family: 'FontAwesome';  
+    font-size: 21px;
+    font-weight: lighter;
+    content: "\f107";
+    float: right; 
+}
+
+.card-header[aria-expanded="true"]::after {
+    content: "\f106";
+}
+
+.card-header span{
+    position: relative;
+    top: 6px;
+    font-weight: 500;
+}
+
+.card{
+    padding: 10px;
+    border:none;
+}
+
+.card-body{
+    vertical-align: middle;
+}
+
+.card-text{
+    width:70%;
+    margin-left:10px;
+    text-align: left;
+    float: left;
+  }
+
+ form{
+      margin-top: 20px;
+      padding-bottom: 20px;
+  }
+
+  .rating-text{
+      font-size: 12px;
+      font-weight: bold;
+  }
+
+#accordion{
+    width: 80%
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -52,4 +105,9 @@ ul{
         margin-right: 5px;
         min-width: 90%;
     }
+    
+    .card-text{
+        margin-top: -20px;
+    }
+    
     }

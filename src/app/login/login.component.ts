@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
+    //If the user is logged in, go to homepage
     this.auth.getUserState()
     .subscribe( user => {
       this.user = user;
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
     })
   }
   
+  //Log the user in with form data or display an error
   login(frm){
     this.auth.login(frm.value.email, frm.value.password);
     this.auth.eventAuthErrorLogin$.subscribe(data=>{

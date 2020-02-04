@@ -16,12 +16,14 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    //Check search query and load movies as it changes
     this.route.paramMap.subscribe(params => {
       this.searchQuery = params.get('query');
       this.loadMovies();
     });
   }
   
+  //Load the movies from API
   loadMovies(){
     return this.movies.search(this.searchQuery)
       .subscribe(data => this.searchResults = data['Search']);

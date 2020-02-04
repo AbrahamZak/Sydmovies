@@ -16,6 +16,7 @@ export class ForgotComponent implements OnInit {
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
+    //If the user is logged in, go to homepage
     this.auth.getUserState()
     .subscribe( user => {
       this.user = user;
@@ -25,6 +26,7 @@ export class ForgotComponent implements OnInit {
     })
   } 
 
+  //Submit a forgot password email
   async forgot(frm){
     this.success = false;
     this.auth.eventAuthErrorReset$.subscribe(data=>{

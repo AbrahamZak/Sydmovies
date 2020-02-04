@@ -51,7 +51,7 @@ Movie page (from search results) (50%)\
 Design - 75%\
 Integration with movie API - 100%\
 Favorite movie (when logged in) - 100%\
-Review movie (when logged in) - 0%\
+Review movie (when logged in) - 50%\
 \
 Profile page (when logged in) (75%)\
 Design - 75%\
@@ -61,5 +61,7 @@ Reset password - 100%\
 \
 Mobile Adjustments (50%)\
 Fix design for mobile experience - 50%\
-Other mobile tweeks - 0%
+Other mobile tweeks - 0%\
+Other\
+Comment code (100%)
 

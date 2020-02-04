@@ -53,3 +53,30 @@
 </div>
 </div>
 </div>
+
+<div *ngIf="user && !reviewed" class="accordion" id="accordion">
+<div class="card">
+    <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          <span>Leave a Review</span>
+    </div>
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+        <form #reviewForm="ngForm" (ngSubmit)="submitReview(reviewForm)">
+            <div class="form-group">
+                <input ngModel #headline="ngModel" name="headline" class="form-control" placeholder="Review Headline" type="text" required>
+            </div> <!-- form-group// -->
+            <div class="form-group">
+                <textarea rows="5" ngModel #review="ngModel" name="review" class="form-control" placeholder="Enter your insightful review here..." required></textarea>
+            </div> <!-- form-group// --> 
+            <div class="form-group">
+                <label class="rating-text" for="rating">Rating: </label>
+                <select class="form-control" ngModel #rating="ngModel" name="rating" id="rating" required>
+                  <option *ngFor="let r of ratings" [value]="r">{{r}}</option>
+                </select>
+              </div> <!-- form-group// --> 
+            <div class="form-group">
+                <button type="submit" class="btn btn-outline-dark btn-block">Submit Review</button>
+            </div> <!-- form-group// -->                                        
+        </form>
+    </div>
+</div>
+</div>

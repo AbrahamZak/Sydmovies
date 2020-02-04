@@ -13,6 +13,7 @@ export class SignupComponent implements OnInit {
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
+    //If logged in go to homepage
     this.auth.getUserState()
     .subscribe( user => {
       this.user = user;
@@ -22,11 +23,11 @@ export class SignupComponent implements OnInit {
     })
   }
 
+  //Create a new user and report any errors
   createUser(frm){
     this.auth.createUser(frm.value);
       this.auth.eventAuthErrorSignUp$.subscribe(data=>{
       this.authError = data;
-      console.log(data);
     })
   }
 
