@@ -22,7 +22,8 @@
 <img class="logo"  src="../assets/img/meta.png"><p>{{ratingData[2]?.Value}}</p>
 </div>
 </div>
-<h2>Sydscore: X/10</h2>
+<h2 *ngIf='reviewData.length == 0'>Sydscore: None/10</h2>
+<h2 *ngIf='reviewData.length > 0'>Sydscore: {{movieRating}}/10</h2>
 </div>
 
 <br>
@@ -53,10 +54,12 @@
 </div>
 </div>
 </div>
-
+<br>
+    <div class="row">
+        <div class="col-md-12">
 <div *ngIf="user && !reviewed" class="accordion" id="accordion">
-<div class="card">
-    <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+<div class="card drop">
+    <div class="card-header drop-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
           <span>Leave a Review</span>
     </div>
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
@@ -80,3 +83,27 @@
     </div>
 </div>
 </div>
+</div>
+</div>
+
+<br>
+<h4>Reviews</h4>
+<p *ngIf='(reviewData.length == 0) && user'>It seems that there aren't any reviews for this title yet, maybe you could be the first to add one?</p>
+<p *ngIf='(reviewData.length == 0) && !user'>It seems that there aren't any reviews for this title yet, create an account and be the first to add one.</p>
+<div class="reviewsList">
+    <ul class="list-group list-group-flush">
+        <div class="row">
+            <div class="col-md-12"> 
+        <li *ngFor='let review of reviewData'  class="list-group-item">
+            <div class="card border-dark mb-12">
+                <div class="card-header">{{review.Display}}</div>
+                <div class="card-body text-dark">
+                  <h5 class="card-title">{{review.Headline}} ({{review.Rating}}/10)</h5>
+                  <p class="card-text">{{review.Review}}</p>
+                </div>
+              </div>
+        </li>
+        </div></div>
+      </ul>
+</div>
+

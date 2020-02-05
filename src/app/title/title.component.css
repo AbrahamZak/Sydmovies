@@ -43,11 +43,11 @@ ul{
     color: gold;
 }
 
-.card-header{
+.drop-header{
     color: black;
 }
 
-.card-header:after {
+.drop-header:after {
     font-family: 'FontAwesome';  
     font-size: 21px;
     font-weight: lighter;
@@ -55,31 +55,20 @@ ul{
     float: right; 
 }
 
-.card-header[aria-expanded="true"]::after {
+.drop-header[aria-expanded="true"]::after {
     content: "\f106";
 }
 
-.card-header span{
+.drop-header span{
     position: relative;
     top: 6px;
     font-weight: 500;
 }
 
-.card{
+.drop{
     padding: 10px;
     border:none;
 }
-
-.card-body{
-    vertical-align: middle;
-}
-
-.card-text{
-    width:70%;
-    margin-left:10px;
-    text-align: left;
-    float: left;
-  }
 
  form{
       margin-top: 20px;
@@ -91,9 +80,6 @@ ul{
       font-weight: bold;
   }
 
-#accordion{
-    width: 80%
-}
 
 /* ---------------------------------------------------
     MEDIAQUERIES
@@ -106,7 +92,7 @@ ul{
         min-width: 90%;
     }
     
-    .card-text{
+    .drop-text{
         margin-top: -20px;
     }
     

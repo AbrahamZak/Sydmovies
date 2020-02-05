@@ -13,9 +13,11 @@ export class TitleComponent implements OnInit {
   movie: string;
   movieData: any = {};
   ratingData: any = {};
+  reviewData: any[] =[];
   liked: Boolean = false;
   reviewed: Boolean = false;
   ratings = [1,2,3,4,5,6,7,8,9,10];
+  movieRating = 0;
 
   constructor(private auth: AuthService, private route: ActivatedRoute, private movies: MoviesService) { }
 
@@ -35,14 +37,29 @@ export class TitleComponent implements OnInit {
     })
 
     //Check the currently selected movie and load
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe(async params => {
       this.movie = params.get('movie');
       this.loadMovie();
+      this.reviewData = await this.movies.getReviewsMovie(this.movie);
+      this.calculateAvgScore();
     });
-
-    
   }
-  
+
+  //Get the average score
+  calculateAvgScore(){
+    if (this.reviewData.length > 0){
+    var reviewScores = this.reviewData.map(x => x['Rating']);
+    console.log(reviewScores);
+    var total = 0.00;
+    for (var i = 0; i<reviewScores.length; i++){
+      total += reviewScores[i];
+    }
+    total = total / reviewScores.length;
+    this.movieRating = total;
+    console.log(total);
+  }
+  }
+
   //Load the movie data from the API
   loadMovie(){
     return this.movies.getMovie(this.movie)
@@ -55,6 +72,7 @@ export class TitleComponent implements OnInit {
         error => console.log("error")
       );
   }
+  
 
   //Favorite a movie for the logged in user
   favorite(){
@@ -68,10 +86,13 @@ export class TitleComponent implements OnInit {
     this.movies.removeFavorite(this.user.uid, this.movie);
   }
 
-  //Submit a review for the logged in user
-  submitReview(reviewForm){
+  //Submit a review for the logged in user, update the review data and score
+  async submitReview(reviewForm){
     this.reviewed = true;
-    this.movies.insertNewReview(this.user.uid, this.movieData, reviewForm.value.headline, reviewForm.value.review, reviewForm.value.rating);
+    this.movies.insertNewReviewUser(this.user.uid, this.movieData, reviewForm.value.headline, reviewForm.value.review, reviewForm.value.rating);
+    this.movies.insertNewReviewMovie(this.user.displayName, this.user.uid, this.movieData, reviewForm.value.headline, reviewForm.value.review, reviewForm.value.rating);
+    this.reviewData = await this.movies.getReviewsMovie(this.movie);
+    this.calculateAvgScore();
   }
-
+ 
 }

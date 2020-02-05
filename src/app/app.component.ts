@@ -10,12 +10,16 @@ import { AuthService } from './auth.service';
 export class AppComponent {
   user: firebase.User;
   title = 'sydmovies';
-
+  mobile = false;
   constructor(private auth: AuthService, 
     private router: Router) { }
 
     //Get the user state
     ngOnInit() {
+      if (window.innerWidth <= 800) { 
+        this.mobile = true;
+      }
+
       this.auth.getUserState()
         .subscribe( user => {
           this.user = user;

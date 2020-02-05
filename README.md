@@ -47,21 +47,24 @@ Movie Search Results (100%)\
 Design - 100%\
 Integration with movie API - 100%\
 \
-Movie page (from search results) (50%)\
-Design - 75%\
+Movie page (from search results) (100%)\
+Design - 100%\
 Integration with movie API - 100%\
-Favorite movie (when logged in) - 100%\
-Review movie (when logged in) - 50%\
+Favorite/unfavorite movie (when logged in) - 100%\
+Review movie (when logged in) - 100%\
+Get Sydscore (average of all reviews) - 100%\
 \
-Profile page (when logged in) (75%)\
-Design - 75%\
+Profile page (when logged in) (100%)\
+Design - 100%\
 View Favorites - 100%\
-View Reviews - 0%\
+View Reviews - 100%\
+Delete Reviews - 100%\
 Reset password - 100%\
 \
-Mobile Adjustments (50%)\
-Fix design for mobile experience - 50%\
-Other mobile tweeks - 0%\
+Mobile Adjustments (100%)\
+Fix design for mobile experience - 100%\
+Other mobile tweeks - 100%\
 Other\
-Comment code (100%)
+Comment code (100%)\
+Fix any bugs found while testing (0%)
 

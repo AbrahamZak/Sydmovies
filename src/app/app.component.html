@@ -5,9 +5,12 @@
      
         <a><button class="btn btn-outline-dark float-sm-right" *ngIf="!user" (click)="login()" type="link">Sign In</button></a>
         <div *ngIf="user" class="dropdown">
-            <button class="btn btn-outline-dark float-sm-right dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button *ngIf="!mobile" class="btn btn-outline-dark float-sm-right dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ user?.displayName }}
             </button>
+            <button *ngIf="mobile" class="btn btn-outline-dark float-sm-right dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Account
+          </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" (click)="profile()">My Profile</a>
               <a class="dropdown-item" (click)="logout()">Logout</a>

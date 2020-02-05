@@ -1,13 +1,12 @@
-h1,h3,p{
+.main-text,p{
     padding-left: 15px;
 }
-h5{
-    padding-left:20px;
-}
-.card {
+.changePass {
     float: none; 
     margin-top: 30px;
     max-width: 375px;
+    margin: 5px;
+
 }
 label{
     font-weight: bold;

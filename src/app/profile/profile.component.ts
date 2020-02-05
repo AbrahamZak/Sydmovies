@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   changeSuccess = false;
   error = false;
   favorites: any;
+  reviews: any; 
 
   ngOnInit() {
     this.auth.getUserState()
@@ -27,9 +28,16 @@ export class ProfileComponent implements OnInit {
           }
           //Get the user's favorite list if they are logged in
           this.favorites = await this.movies.getFavorites(user.uid);
+          //Get the user's reviews list if they are logged in
+          this.reviews = await this.movies.getReviews(user.uid);
         })
-  }
+  } 
 
+  //Delete a specified review and reload user reviews
+  deleteReview(title){
+    this.movies.removeReview(this.user.uid, title);
+    this.reviews = this.movies.getReviews(this.user.uid);
+  }
   //Submit the change password request and report any errors, if not report a success
   changePassword(passwordChangeForm){
     this.changeSuccess = this.auth.changePassword(this.user, passwordChangeForm.value.currentPassword, passwordChangeForm.value.passwordChange, passwordChangeForm.value.passwordChangeConfirm);
