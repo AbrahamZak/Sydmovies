@@ -42,7 +42,7 @@ profile() {
 
 //Logout button function
 logout(){
-  this.auth.logout();
   this.router.navigate(['/']);
+  this.auth.logout();
 }
 }

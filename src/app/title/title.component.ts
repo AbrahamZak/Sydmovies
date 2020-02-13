@@ -49,14 +49,12 @@ export class TitleComponent implements OnInit {
   calculateAvgScore(){
     if (this.reviewData.length > 0){
     var reviewScores = this.reviewData.map(x => x['Rating']);
-    console.log(reviewScores);
     var total = 0.00;
     for (var i = 0; i<reviewScores.length; i++){
       total += reviewScores[i];
     }
     total = total / reviewScores.length;
     this.movieRating = total;
-    console.log(total);
   }
   }
 
