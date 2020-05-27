@@ -67,5 +67,5 @@ Fix design for mobile experience - 100%\
 Other mobile tweeks - 100%\
 Other\
 Comment code (100%)\
-Fix any bugs found while testing (0%)
+Fix any bugs found while testing (100%)
 
